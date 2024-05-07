@@ -21,21 +21,56 @@ export const getImgById = async (req, res) => {
 };
 
 export const postImg = async (req, res) => {
-  try {
-    const { user, user_id, description } = req.body;
-
-    const newPost = await postData.create({
-      image: req.file.filename,
-      user: user,
-      user_id: user_id,
-      description: description,
-    });
-    res.json(newPost);
-  } catch (error) {
-    res.status(400).json({ error: "Error at post-img controller" });
-    console.log(error.message);
+  const { image, user, user_id, description } = req.body;
+  if (!image) {
+    res.status(400);
+    throw new Error("Error");
   }
+
+  try {
+    const post = await postData.create({
+      image,
+      user,
+      user_id,
+      description,
+    });
+    res.status(201).json({ success: true, post });
+  } catch (error) {
+    console.error(error.message);
+  }
+  // try {
+  //   const { user, user_id, description } = req.body;
+
+  //   const newPost = await postData.create({
+  //     image: req.file.filename,
+  //     user: user,
+  //     user_id: user_id,
+  //     description: description,
+  //   });
+  //   res.json(newPost);
+  // } catch (error) {
+  //   res.status(400).json({ error: "Error at post-img controller" });
+  //   console.log(error.message);
+  // }
 };
+// export const postImg2 = async (req, res) => {
+//   const { image, description, user, user_id } = req.body;
+//   if (!image) {
+//     throw new Error(Error);
+//   }
+//   try {
+//     const post = await postData.create({
+//       image: req.file.filename,
+//       // user: user,
+//       // user_id: user_id,
+//       description: description,
+//     });
+//     res.status(201).json({ success: true, post });
+//   } catch (error) {
+//     res.status(400).json({ error: "Error at post-img controller" });
+//     console.log(error.message);
+//   }
+// };
 
 export const editPost = async (req, res) => {
   try {

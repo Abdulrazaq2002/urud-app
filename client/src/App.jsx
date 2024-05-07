@@ -19,13 +19,14 @@ import PostForm from "./pages/postForm";
 import CurrentUserPost from "./pages/currentuserpost";
 import UserData from "./pages/userData";
 import Search from "./components/search";
+import Post from "./pages/post";
+import GetPost from "./pages/getPost";
 
 export default function App() {
   const { authUser } = userAuthContext();
   return (
     <>
       <Toaster />
-
       <Router>
         <Header />
         <Routes>
@@ -37,7 +38,7 @@ export default function App() {
           />
           <Route
             path='/post'
-            element={authUser ? <PostForm /> : <Navigate to={"/"} />}
+            element={authUser ? <Post /> : <Navigate to={"/"} />}
           />
           <Route
             path='/signin'
@@ -49,7 +50,7 @@ export default function App() {
           />
           <Route
             path='/userdata'
-            element={authUser ? <Profile /> : <Navigate to={"/"} />}
+            element={authUser ? <Profile /> : <Authpage />}
           />
           <Route path='/userpost' element={<CurrentUserPost />} />
           <Route path='/profile' element={<UserData />} />

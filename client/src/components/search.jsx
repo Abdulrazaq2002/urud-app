@@ -52,10 +52,10 @@ export default function Search() {
           <div
             key={index}
             className='border border-gray-300 rounded-md overflow-hidden'
-            onClick={() => openModal(ImgUrl + post.image)} // Open modal on image click
+            onClick={() => openModal(post.image)} // Open modal on image click
           >
             <img
-              src={ImgUrl + post.image}
+              src={post.image}
               alt='Search Result'
               className='w-full h-56 object-cover cursor-pointer'
             />
