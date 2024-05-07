@@ -38,25 +38,23 @@ export default function GetPost() {
   const openModel = (img) => {
     setSelectedImage(img);
   };
-  const ImgUrl = `http://localhost:202/api/uploads/`;
 
   return (
     <>
       {!isLoading ? ( // Check if loading is finished
         isPost ? ( // Check if posts are available
-          <div className='flex justify-between flex-wrap w-full max-w-5xl'>
+          <div className='flex justify-center flex-wrap'>
             {posts.map((post, index) => (
               <div
                 key={index}
-                className='w-full md:w-1/3 p-2'
-                onClick={() => openModel(ImgUrl + post.image)}>
+                className='w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-2'
+                onClick={() => openModel(post.image)}>
                 <div className='bg-white rounded-lg shadow-md'>
                   <img
-                    src={ImgUrl + post.image}
+                    src={post.image}
                     alt=''
-                    className='w-50 h-50 object-cover rounded-t-lg'
+                    className='w-full h-48 object-cover rounded-t-lg'
                   />
-
                   <div className='p-4'>
                     <p className='text-gray-700 overflow-hidden md:overflow-ellipsis capitalize'>
                       {post.description}

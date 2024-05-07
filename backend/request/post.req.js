@@ -10,36 +10,36 @@ import {
   postImg,
 } from "../authController/user.post.js";
 import path from "path";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
 const router = express.Router();
 
-// Define the directory where uploaded images will be stored
-const uploadDir = join(__dirname, "../public/uploads");
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = dirname(__filename);
 
-// Set up multer storage
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, uploadDir);
-  },
-  filename: (req, file, cb) => {
-    cb(
-      null,
-      file.fieldname + "_" + Date.now() + path.extname(file.originalname)
-    );
-  },
-});
+// // Define the directory where uploaded images will be stored
+// const uploadDir = join(__dirname, "../public/uploads");
 
-// Create multer instance
-const upload = multer({ storage: storage });
+// // Set up multer storage
+// const storage = multer.diskStorage({
+//   destination: (req, file, cb) => {
+//     cb(null, uploadDir);
+//   },
+//   filename: (req, file, cb) => {
+//     cb(
+//       null,
+//       file.fieldname + "_" + Date.now() + path.extname(file.originalname)
+//     );
+//   },
+// });
+
+// // Create multer instance
+// const upload = multer({ storage: storage });
 
 // Handle POST request to upload image
-router.post("/post", upload.single("image"), postImg);
+router.post("/post", postImg);
+// router.post("/post", upload.single("image"), postImg);
 
 // Serve uploaded images statically
-router.use("/uploads", express.static(uploadDir));
+// router.use("/uploads", express.static(uploadDir));
 
 // Handle GET request to retrieve image
 router.get("/post/", getImg);

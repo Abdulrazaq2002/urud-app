@@ -58,7 +58,6 @@ export default function CurrentUserPost() {
       toast.error(error.message);
     }
   };
-  const ImgUrl = `http://localhost:202/api/uploads/`;
   // console.log(posts.length);
   return (
     <>
@@ -96,7 +95,7 @@ export default function CurrentUserPost() {
                       }`}>
                       {/* Step 3: Conditionally style the selected post */}
                       <img
-                        src={ImgUrl + post.image}
+                        src={post.image}
                         alt=''
                         className='w-50 h-50 object-cover rounded-t-lg'
                       />

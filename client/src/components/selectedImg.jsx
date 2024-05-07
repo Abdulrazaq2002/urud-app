@@ -7,14 +7,15 @@ export default function SelectedImg({ setSelectedImg, selectedImg }) {
 
   return (
     <div className='fixed inset-0 z-10 flex items-center justify-center bg-black bg-opacity-50'>
-      <div className='w-full h-full max-w-screen-lg md:max-w-screen-xl mx-auto bg-transparent p-8 rounded-lg relative'>
+      <div className='w-96 h-96 max-w-screen-lg md:max-w-screen-xl mx-auto bg-transparent rounded-lg relative'>
         <img
           src={selectedImg}
           alt='Full-size Image'
-          className='w-full h-auto max-h-full'
+          className='absolute inset-0 object-contain cursor-pointer'
+          onClick={closeModal}
         />
         <button
-          className='absolute top-8 right-8 text-black shadow-md shadow-black'
+          className='absolute top-8 right-8 text-white shadow-md'
           onClick={closeModal}>
           <svg
             xmlns='http://www.w3.org/2000/svg'
